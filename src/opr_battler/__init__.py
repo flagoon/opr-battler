@@ -3,6 +3,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from opr_battler.army_book import map_all_armies
 from opr_battler.get_armies import get_armies
 
 app = FastAPI()
@@ -25,5 +26,12 @@ def zupa(request: Request):
 @app.get("/get_armies")
 def army_list():
     r = get_armies()
+    mapped_armies = map_all_armies(r)
 
-    return r.content
+    with open("src/opr_battler/files/example.csv", "w") as file:
+        file.writelines(
+            f"{army['uid']}; {army['name']}; {army['desc']}; {army['cover_image']}\n"
+            for army in mapped_armies
+        )
+
+    return list(mapped_armies)

@@ -1,11 +1,13 @@
 import requests
 
+from opr_battler.army_book import ArmyBook
+from opr_battler.constants.urls import ALL_ARMIES
 
-def get_armies():
+
+def get_armies() -> list[ArmyBook]:
     """
     Call for the army list
     """
-    armies = requests.get(
-        "https://army-forge.onepagerules.com/api/army-books?filters=official&gameSystemSlug=grimdark-future&searchText=&page=1&unitCount=0&balanceValid=false&customRules=true&fans=false&sortBy=null"
-    )
-    return armies
+    armies = requests.get(ALL_ARMIES)
+
+    return armies.json()

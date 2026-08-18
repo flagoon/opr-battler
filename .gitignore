@@ -5,6 +5,8 @@ build/
 dist/
 wheels/
 *.egg-info
+files/
+
 
 # styles
 tailwindcss/node_modules
