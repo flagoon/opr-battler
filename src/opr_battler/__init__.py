@@ -18,11 +18,6 @@ def home(request: Request):
     return templates.TemplateResponse(request, "home.html", {"data": "zupa"})
 
 
-@app.get("/zupa", include_in_schema=False)
-def zupa(request: Request):
-    return templates.TemplateResponse(request, "zupa.html", {"title": "mamurki"})
-
-
 @app.get("/get_armies")
 def army_list():
     r = get_armies()
