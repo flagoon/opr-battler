@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
 {% block content%}
-<div class="p-4 bg-red-500">zupa</div>
+{% for army in armies %}
+<div>{{army.uid}}</div>
+{% endfor %}
 {% endblock content%}
