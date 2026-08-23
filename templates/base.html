@@ -9,10 +9,10 @@
 	{% else %}
 	<title>OPR Battler</title>
 	{% endif %}
-	<link href="{{url_for('static',path='/css/app.css')}}" rel="stylesheet" />
+	<link href="{{ url_for('static', path='/css/app.css') }}" rel="stylesheet" />
 </head>
 
-<body>
+<body class="bg-slate-800">
 	{% block content%}
 	{% endblock content %}
 </body>

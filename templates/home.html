@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 
 {% block content%}
-{% for army in armies %}
-<div>{{army.uid}}</div>
-{% endfor %}
+<div
+    class="grid grid-flow-row grid-cols-3 gap-4 container mx-auto mt-12 bg-slate-500 border-2 rounded-lg border-slate-200 p-4">
+    {% for army in armies %}
+    <div class="flex">
+        <div><img src="{{army.cover_image}}" /></div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock content%}
