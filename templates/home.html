@@ -2,9 +2,13 @@
 
 {% block content%}
 <div
-    class="grid grid-flow-row grid-cols-4 gap-4 container mx-auto mt-12 bg-slate-500 border-2 rounded-lg border-slate-200 p-4">
+    class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 container mx-auto bg-slate-500 rounded-lg justify-items-center mt-16 p-16 gap-8">
+
     {% for key in armies %}
-    <div><img src="{{ armies.get(key)['coverImagePath']}}" class="rounded-full size-64" />{{armies.get(key)['name']}}
+    <div class="relative">
+        <img src="{{ url_for('static', path='/files/splash.png') }}" class="absolute" />
+        <img src="{{ armies.get(key)['coverImagePath']}}"
+            class="rounded-full size-64 border-2 border-red-100 absolute" />{{armies.get(key)['name']}}
     </div>
     {% endfor %}
 </div>
