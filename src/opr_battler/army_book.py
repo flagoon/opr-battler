@@ -20,6 +20,7 @@ class ArmyBook(TypedDict):
     factionName: str | None
     factionRelation: str | None
     factionNameGeneric: str | None
+    factionIds: str | None
     userId: str
     balanceValid: bool
     balanceValidReason: int
