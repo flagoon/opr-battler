@@ -1,23 +1,32 @@
 {% extends "base.html" %}
 
 {% block content%}
+
+<script>
+    const print_info = (army) => {
+        if (army.members.length === 0) {
+            window.location.href = `army/${army.uid}`;
+        }
+    }
+</script>
+
 <div
     class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 container mx-auto bg-slate-500 rounded-lg justify-items-center mt-16 p-16 gap-8">
 
     {% for army in armies %}
-    <div
-        class="w-full flex p-4 bg-slate-400 rounded-lg hover:outline-2 hover:outline-sky-700 hover:cursor-pointer group">
+    <div onclick='print_info({{ army | tojson }})'
+        class="w-full flex p-4 bg-slate-400 rounded-lg hover:outline-2 hover:outline-sky-700 hover:cursor-pointer group justify-between">
         <div class="relative w-32 h-32 flex justify-center items-center">
             <img src="{{ url_for('static', path='/files/splash.png') }}"
                 class="size-32 absolute top-0 left-0 opacity-50" />
             <img src="{{army.get('coverImagePath')}}" class="size-24 absolute opacity-80 group-hover:opacity-100" />
         </div>
-        <div class="ml-4 self-end group-hover:font-bold">{{army.get("name")}}</div>
-
+        <div class="flex flex-col justify-end content-end">
+            <div class="group-hover:font-bold">{{army.get("name")}}</div>
+        </div>
+        <div class="hidden group-hover:block absolute t-0">ZUPA BISKUPA</div>
     </div>
     {% endfor %}
 </div>
-
-<pre>{{ armies | tojson(2) }}</pre>
 
 {% endblock content%}
