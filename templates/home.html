@@ -24,7 +24,8 @@
         <div class="flex flex-col justify-end content-end">
             <div class="group-hover:font-bold">{{army.get("name")}}</div>
         </div>
-        <div class="hidden group-hover:block absolute t-0">ZUPA BISKUPA</div>
+        <div class="hidden {% if army.get('members')|count -%} group-hover:block {%- endif %} absolute t-0"><img
+                src="{{ url_for('static', path='icons/arrow-down.svg') }}" class="w-6 h-6" /> </div>
     </div>
     {% endfor %}
 </div>
